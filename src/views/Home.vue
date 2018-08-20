@@ -1,9 +1,12 @@
 <template>
-    <img alt="Vue logo" src="../assets/logo.png">
+    <div>
+      asasfsa
+    </div>
 </template>
 
 <script>
 // @ is an alias to /src
+
 
 export default {
   name: 'home',
