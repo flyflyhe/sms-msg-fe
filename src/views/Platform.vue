@@ -36,7 +36,7 @@
             </el-form>
 
             <div slot="footer" class="dialog-footer">
-                <el-button @click="createCancle">取 消</el-button>
+                <el-button @click="createCancel">取 消</el-button>
                 <el-button type="primary" @click="createSubmit">确 定</el-button>
             </div>
         </el-dialog>
@@ -85,11 +85,13 @@
                   if (!valid) {
                       return false;
                   }
-                  return true;
-              }))
-              this.openCreate();
+                  this.openCreate();
+                  HttpClient.hPost(platform, this.createForm).then((res) => {
+                    alert('添加成功')
+                  }).catch((err) => {alert(err.message)})
+              }));
           },
-          createCancle:function() {
+          createCancel:function() {
               
               this.openCreate();
           }
