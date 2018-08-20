@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-container>
-        <el-header>Header</el-header>
+        <el-header>SMS</el-header>
         <el-container>
             <el-aside width="200px">
               <side-bar />
@@ -27,8 +27,8 @@ export default {
 </script>
 
 <style>
-  .el-header, .el-footer {
-    background-color: #B3C0D1;
+  .el-header {
+    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
     color: #333;
     line-height: 60px;
   }
@@ -41,9 +41,6 @@ export default {
   
   .el-main {
     margin-top:20px;
-    background-color: rgb(233, 238, 243);
-    color: #333;
-    text-align: center;
     margin-left: 20px;
   }
 </style>

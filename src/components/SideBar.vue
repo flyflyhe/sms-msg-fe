@@ -3,9 +3,7 @@
         <el-col :span="24">
             <el-menu
             :default-active="$route.path"
-            :router=true
-            @open="handleOpen"
-            @close="handleClose">
+            :router=true>
                 <el-submenu index="1">
                     <template slot="title">
                         <i class="el-icon-location"></i>
@@ -13,8 +11,8 @@
                     </template>
                     <el-menu-item-group>
                         <template slot="title">平台</template>
-                        <el-menu-item index="/about">关于</el-menu-item>
-                        <el-menu-item index="/">主页</el-menu-item>
+                        <el-menu-item index="/platform">短信服务商</el-menu-item>
+                        <el-menu-item index="/secret">短信服务商密钥</el-menu-item>
                     </el-menu-item-group>
                     <el-menu-item-group title="分组2">
                         <el-menu-item index="1-3">选项3</el-menu-item>
@@ -33,15 +31,8 @@
 export default {
   name: "SideBar",
   methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
-    }
   },
   created:function(){
-      console.log(this);
   }
 };
 </script>
