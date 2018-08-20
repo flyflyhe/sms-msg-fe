@@ -44,7 +44,6 @@ export default {
     background-color: rgb(233, 238, 243);
     color: #333;
     text-align: center;
-    line-height: 160px;
     margin-left: 20px;
   }
 </style>
