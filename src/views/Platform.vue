@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-button type="primary" plain>添加服务商</el-button>
+        <el-button type="primary" plain @click="openCreate">添加服务商</el-button>
         <el-table
             :data="tableData"
             style="width: 100%">
@@ -22,6 +22,24 @@
                 label="创建时间">
             </el-table-column>
         </el-table>
+        <el-dialog title="添加服务商" :visible.sync="dialogFormVisible">
+             <el-form :model="createForm" :rules="rules" ref="createForm">
+                <el-form-item label="平台名称" label-width="100px" prop="name" >
+                    <el-input v-model="createForm.name" auto-complete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="平台类型"  label-width="100px" prop="type">
+                    <el-select v-model="createForm.type" placeholder="请选择活动区域">
+                        <el-option label="短信" value="1"></el-option>
+                        <el-option label="邮箱" value="2"></el-option>
+                    </el-select>
+                </el-form-item>
+            </el-form>
+
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="createCancle">取 消</el-button>
+                <el-button type="primary" @click="createSubmit">确 定</el-button>
+            </div>
+        </el-dialog>
     </div>
 </template>
 
@@ -34,14 +52,47 @@
     export default {
       data() {
         return {
-          tableData: []
+            dialogFormVisible:false,
+            createForm:{
+                name:'',
+                type:'',
+            },
+            rules:{
+                name:[
+                    { type: "string", required: true, message: '请输入服务商名称', trigger: 'blur' }
+                ],
+                type:[
+                    {type: 'string', required: true, message: '类型不能为空', trigger: 'blur'}
+                ]
+            },
+            tableData: []
         }
+      },
+      components:{
       },
       mounted:function() {
           let that = this;
           HttpClient.hGet(platform).then((res) => {
               that.tableData = res.data
           }).catch(err => {alert(err);})
+      },
+      methods:{
+          openCreate:function() {
+              this.dialogFormVisible = !this.dialogFormVisible;
+          },
+          createSubmit:function() {
+              if (this.$refs['createForm'].validate((valid) => {
+                  if (!valid) {
+                      return false;
+                  }
+                  return true;
+              }))
+              this.openCreate();
+          },
+          createCancle:function() {
+              
+              this.openCreate();
+          }
       }
     }
   </script>
