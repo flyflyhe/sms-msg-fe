@@ -35,7 +35,6 @@ export default {
   
   .el-aside {
     margin-top: 20px;
-    background-color: #D3DCE6;
     color: #333;
   }
   
