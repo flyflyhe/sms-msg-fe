@@ -139,7 +139,7 @@
                   }
                   this.openCreate();
                   HttpClient.hPost(platform, this.createForm).then((res) => {
-                    alert('添加成功'+res.data.id);
+                    this.$message('添加成功'+res.data.id);
                     this.initData();
                   }).catch((err) => {alert(err.message)})
               }));
@@ -152,13 +152,13 @@
           },
           updateSubmit:function() {
               HttpClient.hPut(platform + "/" + this.updateForm.id, this.updateForm).then(() => {
-                  alert("修改成功");
-                  this.initData();
+                 this.$message('修改成功');
+                 this.initData();
               }).catch((err) => {alert(err.message);});
           },
           handleDelete:function(id) {
              HttpClient.hDelete(platform+"/"+id).then(() => {
-                 alert('删除成功');
+                 this.$message('删除成功');
                  this.initData();
              }).catch((err) => {alert(err.message);})
           },
