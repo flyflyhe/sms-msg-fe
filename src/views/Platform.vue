@@ -27,6 +27,13 @@
             </el-table-column>
         </el-table>
 
+        <el-pagination background :layout="pagination.layout" 
+            :total="pagination.total"
+            :page-size="pagination.pageSize"
+            @current-change="changePage"
+            style="margin-top:20px;">
+        </el-pagination>
+
         <el-dialog title="添加服务商" :visible.sync="dialogFormVisible">
              <el-form :model="createForm" :rules="rules" ref="createForm">
                 <el-form-item label="平台名称" label-width="100px" prop="name" >
@@ -101,7 +108,11 @@
                     value:2,
                 }
             ],
-
+            pagination:{
+                total:100,
+                layout: 'prev, pager, next',
+                pageSize:5,
+            },
             rules:{
                 name:[
                     { type: "string", required: true, message: '请输入服务商名称', trigger: 'blur' }
@@ -123,6 +134,7 @@
             let that = this;
             HttpClient.hGet(platform).then((res) => {
                 that.tableData = res.data
+                this.pagination.total = res.data.length;
             }).catch(err => {alert(err);})
           },
           openCreate:function() {
@@ -163,6 +175,9 @@
               this.updateForm.id = row.id;
               this.updateForm.name = row.name;
               this.updateForm.type = row.type;
+          },
+          changePage:function(currentPage){
+              alert(currentPage);
           },
       }
     }
