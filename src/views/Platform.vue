@@ -4,18 +4,14 @@
         <el-table
             :data="tableData"
             style="width: 100%">
-            <el-table-column
-                prop="id"
-                label="#id"
-                width="80">
-            </el-table-column>
+            <el-table-column prop="id" label="#id" width="80" sortable="true" />
             <el-table-column
                 prop="name"
                 label="服务商名">
             </el-table-column>
             <el-table-column
                 prop="type"
-                label="地址">
+                label="类型">
             </el-table-column>
             <el-table-column
                 prop="created_date"
@@ -167,7 +163,6 @@
               this.updateForm.id = row.id;
               this.updateForm.name = row.name;
               this.updateForm.type = row.type;
-              console.log(this.updateForm);
           },
       }
     }
