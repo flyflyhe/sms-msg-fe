@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Platform from './views/Platform.vue'
 import Secret from './views/Secret.vue'
+import Send from './views/Send.vue'
 
 Vue.use(Router)
 
@@ -32,6 +33,11 @@ export default new Router({
       path:'/secret',
       name:'secret',
       component:Secret
+    },
+    {
+      path:'/send',
+      name:'send',
+      component:Send,
     }
   ]
 })
